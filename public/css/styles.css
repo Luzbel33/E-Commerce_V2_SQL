@@ -1,0 +1,977 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('/font/Mona-Sans.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+  
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Mona Sans', sans-serif;
+}
+
+:root {
+    --primary: #4c1a6c;
+    --secondary: #842abf;
+    --third: #f252aa;
+    --fourth: #f87d09;
+    --fifth: #f2c12e;
+    --sixth: #f2f2f2;
+}
+
+body{
+    background-color: rgb(0, 0, 0);
+}
+
+/** HEADER */
+.contenedor {
+    min-height: 50px;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: black;
+    gap: 5px;
+}
+.index-botones{
+    display: flex;
+    flex-direction: column;
+    color: var(--sixth); 
+    margin-left: -20px;
+    padding: 2px;
+    font-size: 0.8rem;
+}
+.div1 {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--sixth);
+    min-width: 180px;
+    margin-left: -10px;
+    height: 15px;
+    border-radius: 40px;
+}
+.img1{
+    padding-bottom: 5px;
+    height: 50px;
+    
+}
+.div2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #7a45ba), radial-gradient(circle at 0% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to bottom, #7a45ba, #7a45ba), radial-gradient(circle at 0% 0%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to left, #7a45ba, #7a45ba), radial-gradient(circle at 100% 0%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to top, #7a45ba, #7a45ba);
+    background-size: 0px 0px, calc(100% - 22px) 0px, 0px 0px, 2.5px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    max-height: 40px;
+    min-height: 40px;
+    min-width: 30px;
+    max-width: 30px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.div3 {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #56caf0;
+    min-height: 2px;
+    min-width: 15px;
+    border-radius: 15px;
+}
+.banner {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-width: 390px;
+  min-height: 5vh;
+  max-height: 100px;
+  border-radius: 0;
+  box-shadow: 0.5px 2.5px 20.5px 0.5px black;
+  overflow: hidden;
+  margin: 0;
+  flex-direction: row;
+}
+.img2 {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover; 
+}
+
+/** HOME */
+.home-bg{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 20px;
+    margin: 20px 25px;
+}
+#product{
+    background-color: #000;
+    border-radius: 10px;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    padding: 15px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--sixth);
+}
+.prod-img{
+    margin: 12px 5px 5px;
+    max-width: 80%;
+    border-radius: 40px;
+    box-shadow: 0.5px 2.5px 20.5px 0.5px black;
+}
+.desc{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-left: 25px;
+    color: var(--sixth);
+}
+.precio {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.7em;
+    margin: 25px 10px 35px;
+    color: var(--sixth);
+}
+#boton{
+    color:white;
+}
+.boton{
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border: 2px solid transparent;
+    background-color: black;
+    height: 40px;
+    width: 80px;
+    margin: 15px 15px 5px;
+    font-size: 1.2rem;
+    border-radius: 2rem;
+}
+.botones{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/** PRODUCT-DETAIL/2DA PAGINA */
+.img3{
+    max-width: 70%;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    border-radius: 40px;
+    box-shadow: 0.5px 2.5px 20.5px 0.5px black;
+}
+.product-detail {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-top: 15px;
+}
+.product-det-img{  
+    background-color: #000;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+}
+.product-title{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 25px;
+    margin-top: 20px;
+    font-size: 2em; 
+    color: var(--sixth);
+}
+.product-desc{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 25px;
+    font-size: 1.5em; 
+    color: var(--sixth);
+}
+.product-info{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#boton4{
+    color: var(--sixth)
+}
+.boton4{
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border: 2px solid transparent;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    min-width: 110px;
+    max-width: 150px;
+    background-color: black;
+    padding: 2px;
+    font-size: 25px;
+    border-radius: 2rem;
+   
+}
+.prod-price{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+   justify-content: space-around;
+}
+.precio4{
+  
+    padding: 5px;
+    font-size: 2em;
+    color: var(--sixth);
+}
+
+/** CARRITO/3RA PAGINA */
+.carrito{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 25px 22px;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    width: 350px;
+    height: 700px;
+    border-radius: 10px;
+    box-shadow: 1.5px 3.5px 5.5px 3.5px rgba(0, 0, 0, 0.329);
+    background-color: #000;
+}
+#productos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 15px;
+}
+.title-prod{
+    margin: 10px 10px 5px;
+    font-size: 1.5rem;
+    color: var(--sixth)
+}
+.price{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    color: var(--sixth)
+}
+.img-cart{
+    margin-left: 5px;
+    max-width: 50%;
+    max-height: 50%;
+    border-radius: 25px;
+    box-shadow: 0.5px 2.5px 20.5px 0.5px black;
+}
+#botones-cart{
+    color: var(--sixth);
+}
+.boton-cart{
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border: 2px solid transparent;
+    margin: -25px 30px;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 25px;
+    border-radius: 2rem;
+}
+.boton-cart2{
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border: 2px solid transparent;
+    padding: 5px;
+    margin: -30px 200px 5px;
+    font-size: 15px;
+    width: 60px;
+    height: 30px;
+    border-radius: 2rem;
+}
+.total-1{
+color: var(--sixth);
+font-size: 1.2rem;
+}
+.total{
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    padding-left: 15px;
+    font-size: 1.2rem;
+}
+
+/** REGISTER/4TA PAGINA */
+form{
+    background-color: #000;
+    border-radius: 10px;
+    width: 320px;
+    height: 600px;
+    padding: 20px 100px;
+    margin: 25px auto;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    
+}
+#regist-label{
+    margin-left: 10px;
+}
+#birthday-label{
+    margin-left: 5px;
+}
+.padre1, .padre2, .padre3, .padre5{
+    color: var(--sixth);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.padre4, .padre6{
+    color: var(--sixth);
+    display: flex;
+    align-items: center;
+    
+}
+.hijo4, .hijo4-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 25px;
+}
+#birthdate, #country{
+    font-size: 1rem;
+    border-radius: 30px;
+    width: 100px;
+    background-color: var(--sixth);
+    padding: 2.5px;
+}
+.hijo4-2{
+   padding-top: 15px;
+}
+.padre6{
+    padding: 5px;
+    font-size: 1rem;
+    margin-left: 80px;
+}
+input:hover{
+    background-color: #e0fffdfd;
+}
+input{
+    font-size: 1rem;
+    border-radius: 30px;
+    width: 250px;
+    background-color: #ffffff;
+    padding: 2.5px;
+    margin: 2px;
+}
+#register{
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border: 2px solid transparent;
+    margin-top: 10px;
+    background-color: black;
+    color: var(--sixth);
+    padding: 5px;
+    font-size: 1.2rem;
+    width: 120px;
+    height: 40px;
+    border-radius: 2rem;
+}
+#terms-cond{
+    height: 12px;
+}
+
+/** LOGIN /5TA PAGINA */
+.login{
+    border-radius: 10px;
+    width: 320px;
+    height: 420px;
+    padding: 20px 100px;
+    margin: 25px auto;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.login-img{
+    height: 100px;
+}
+#login{
+    color: var(--sixth);
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border: 2px solid transparent;
+    padding: 2px;
+    font-size: 1.2rem;
+    width: 120px;
+    height: 30px;
+    border-radius: 2rem;
+}
+.hijo, .hijo-2{
+    color: var(--sixth);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 25px;
+}
+.extras{
+    color: var(--sixth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+#extras{
+    color: var(--sixth);
+    margin-bottom: 5px;
+}
+a{
+    text-decoration: none;
+    color:#000; 
+}
+
+/** Footer */
+
+.foot {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-width: 390px;
+    background-color:black;
+}
+
+ .foot-img, .foot-titles, .foot3, .foot4 {
+    display: none;
+}
+.foot-img2{
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    margin: auto;
+}
+.copyright{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 1.5em;
+    color: var(--sixth);
+    width: 100%;
+}
+
+/*! PARTE RESPONSIVE PARA DESKTOP */
+@media only screen and (min-width: 1020px) {
+    /*!* main{
+        background: radial-gradient(circle, rgba(86,202,240,1) 0%, rgba(0,0,0,1) 50%);
+    } /*!*/
+
+    .contenedor {
+        height: 140px;
+        display: flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        background-color: black;
+       
+       
+    }
+    .div1 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: var(--sixth);
+        min-width: 1100px;
+        height: 40px;
+        margin: 35px;
+        margin-top: 20px;
+        margin-right: 80px;
+        border-radius: 40px;
+        box-shadow: 0.5px 2.5px 20.5px 0.5px black;
+    }
+    .img1{
+        height: 150px;
+        margin-right: 25px;
+    }
+    .div2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2.5px;
+        background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #45b8ba), radial-gradient(circle at 0% 100%, transparent 7px, #45b8ba 7px, #45b8ba 11px, transparent 11px), linear-gradient(to bottom, #45b8ba, #45b8ba), radial-gradient(circle at 0% 0%, transparent 7px, #45b8ba 7px, #45b8ba 11px, transparent 11px), linear-gradient(to left, #45b8ba, #7a45ba), radial-gradient(circle at 100% 0%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to top, #7a45ba, #7a45ba);
+        background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+        background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+        background-repeat: no-repeat;
+        min-height: 80px;
+        min-width: 70px;
+        margin-top: -20px;
+        margin-left: 20px;
+        border-radius: 15px;
+        box-shadow: 0.5px 2.5px 10.5px 1.5px black;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+    .div3{
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #56caf0;
+        min-height: 5px;
+        min-width: 40px;
+        margin: 2px;
+        border-radius: 15px;
+    }
+    .index-botones{
+        display: flex;
+        flex-direction: column;
+        color: var(--sixth); 
+        margin-left: -40px;
+        margin-bottom: 12px;
+        padding: 0.2px;
+    }
+    .banner{
+        min-width: 100%;
+        max-height: 500px;
+        height: 400px;
+        box-shadow: 0.5px 2.5px 20.5px 0.5px black;
+        overflow: hidden;
+        
+    }
+    .img2{
+        width: 100%;
+        
+}
+
+/** HOME **/
+   .home-bg{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 2rem;
+    margin-top: 50px;
+    box-shadow: none;
+    height: 100%;    
+   }
+   
+    #product{
+        background-color: #000;
+        border-radius: 10px;
+        background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+        background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+        background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+        background-repeat: no-repeat;
+        display: flex;
+        padding: 2rem;
+        align-items: flex-start;
+    }
+    .title {
+        padding: 5px;
+        font-size: 2.5rem;
+    }
+   
+    .prod-img{
+        max-width: 100%;
+        padding: 5px;
+        border-radius: 40px;
+        box-shadow: 0.5px 2.5px 20.5px 0.5px black;
+    }
+    
+    .desc{
+        font-size: 1.5rem;
+        margin: 12px 5px 5px;
+    }
+    .precio {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 2.3em;
+        margin: 25px 10px 35px;
+    }
+    
+   #boton{
+    color:white;
+}
+.boton{
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border-radius: 50em;
+    border: 2px solid transparent;
+    background-color: black;
+    height: 60px;
+    width: 120px;
+    margin: 15px 15px 5px;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+}
+
+/** PROD. DETAIL */
+     .img3{
+    max-width: 100%;
+    padding: 5px;
+    margin: 20px;
+    border-radius: 40px;
+    box-shadow: 0.5px 2.5px 20.5px 0.5px black;
+    }
+    .product-detail {
+        display: flex;
+        flex-direction:row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding: 10px;
+        margin-top: 40px;
+        margin-bottom:40px;
+    }
+    .product-title{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px;
+        font-size: 2em; 
+    }
+    .product-desc{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px;
+        font-size: 1.5em; 
+    }
+    #boton4{
+        color: var(--sixth)
+    }
+    .boton4{
+        background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+        linear-gradient(to right, #56caf0, darkorchid) border-box;
+        border: 2px solid transparent;
+        margin-bottom: 10px;
+        min-width: 110px;
+        width: 150px;
+        background-color: black;
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+
+/** CARRITO/3RA PAGINA */
+.carrito{
+    margin-left: 325px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 1.5px 3.5px 5.5px 3.5px rgba(0, 0, 0, 0.329);
+    width: 1200px;
+    box-shadow: none;
+    height: 100%;    
+}
+#producto1, #producto2{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+#producto1>h1, #producto2>h1{
+    font-size: 2rem;
+    padding: 15px;
+}
+#producto1>h2, #producto2>h2{
+    font-size: 2rem;
+    padding: 15px;
+}
+.img-cart{
+    max-width: 50%;
+    max-height: 100%;
+    border-radius: 25px;
+    margin: 10px;
+}
+.boton-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border-radius: 50em;
+    border: 2px solid transparent;
+    margin: 180px 10px;
+    font-size: 2rem;
+    width: 100px;
+    height: 40px;
+    border-radius: 2rem;
+}
+.price{
+    margin: 120px;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.boton-cart2{
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border-radius: 50em;
+    border: 2px solid transparent;
+    padding: 10px;
+    font-size: 1.5rem;
+    width: 100px;
+    height: 50px;
+    border-radius: 2rem;
+}
+.total{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.total-1{
+    padding: 50px;
+    margin: 10px 100px;
+    font-size: 2rem;
+}
+
+
+/** REGISTER/4TA PAGINA */
+.register-main{
+    background-color: black;
+    padding: 15px;
+}
+form{
+    border-radius: 10px;
+    width: 800px;
+    height: 800px;
+    padding: 50px 100px;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2rem;
+}
+.padre1, .padre2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.padre3, .padre5{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.padre4, .padre6{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.hijo1, .hijo1-2, .hijo2, .hijo2-2, .hijo3, .hijo3-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hijo4, .hijo4-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 25px;
+}
+#birthdate, #country{
+    font-size: 1.5rem;
+    border-radius: 30px;
+    width: 200px;
+    background-color: var(--sixth);
+    padding: 2.5px;
+}
+.hijo4-2{
+   padding-top: 10px;
+}
+.padre6{
+    padding: 5px;
+    font-size: 1.5rem;
+    margin-left: 80px;
+}
+input:hover{
+    background-color: #e0fffdfd;
+}
+input{
+    font-size: 1.5rem;
+    border-radius: 30px;
+    width: 300px;
+    height: 40px;
+    background-color: #ffffff;
+    padding: 2.5px;
+    margin: 15px;
+}
+
+#register{
+background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+linear-gradient(to right, #56caf0, darkorchid) border-box;
+border: 2px solid transparent;
+padding: 5px;
+font-size: 1.5rem;
+width: 200px;
+height: 50px;
+border-radius: 2rem;
+}
+#terms-cond{
+    height: 20px;
+   
+}
+#birthday-label{
+    margin-left: 68px;
+}
+
+/** LOGIN /5TA PAGINA */
+.login{
+    background-color: #000;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    width: 800px;
+    height: 800px;
+    padding: 50px 100px;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
+    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2rem
+}
+.login-img{
+    height: 200px;
+}
+#login{
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+    linear-gradient(to right, #56caf0, darkorchid) border-box;
+    border-radius: 50em;
+    border: 2px solid transparent;
+    padding: 5px;
+    font-size: 2rem;
+    width: 200px;
+    height: 50px;
+    border-radius: 2rem;
+}
+.hijo, .hijo-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 25px;
+}
+.extras{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-size: 2rem;
+}
+.index-botones{
+    color: var(--sixth);
+    margin-right: 50px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+a{
+    text-decoration: none; color:#000; 
+}
+
+/** FOOTER */
+    .foot {
+        display: flex;
+        flex-direction:row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        background-color:black;  
+    }
+    .social{
+        display: flex;
+        flex-direction:row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding: 10px;
+        margin: 0 8px;
+        font-size: 2em;
+    }
+    .foot-titles{
+        color: var(--sixth);
+        margin-top: 80px;
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 2rem;
+    }
+    .foot-desc, .foot-desc2{
+        color: var(--sixth);
+        font-size: 1.2rem;
+    }
+     .foot3, .foot4{
+        display: flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+        padding: 5px;
+        font-size: 1.5em;
+    }
+    .foot-img, .foot-img2{
+        display: flex;
+        flex-wrap: wrap;
+        height: 400px;
+        margin: 0px;
+    }
+    
+    .copyright{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 1.5em;
+        color:var(--sixth);
+        width: 100%;
+    }
+
+};
