@@ -108,9 +108,8 @@ body{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 20px;
-    margin: 20px 25px;
+    justify-content: space-evenly;
+    align-items: center;
 }
 #product{
     background-color: #000;
@@ -570,9 +569,7 @@ a{
         display: flex;
         flex-direction: column;
         color: var(--sixth); 
-        margin-left: -40px;
-        margin-bottom: 12px;
-        padding: 0.2px;
+        padding: 0.2px; 
     }
     .banner{
         min-width: 100%;

@@ -12,7 +12,7 @@ const homeView = (req, res) => {
 const detailProd = (req, res) => {
     const prods = getProds();
     const prod = prods.find(prod => prod.id == req.params.id);
-    res.render(path.join(__dirname, '../views/Detail_Product.ejs'), { prod });
+    res.send(prods);
 };
 
 const cartView = (req, res) => {

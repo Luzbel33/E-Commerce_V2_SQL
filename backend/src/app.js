@@ -7,8 +7,12 @@ const port = 3000;
 const routes = require('./routes/index');
 const mins15 = 15 * 60 * 1000
 const morgan = require('morgan');
+const cors = require("cors");
 
 const app = express(); 
+
+app.use(express.json());
+app.use(cors());
 
 app.use(session({
     name: 'nuevo',

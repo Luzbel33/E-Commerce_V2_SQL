@@ -4,15 +4,10 @@ const { check } = require('express-validator')
 module.exports = function(app) {
 
     app.get('/', usersController.homeView);
-
     app.get('/detailProduct/:id', usersController.detailProd);
-
     app.get('/cart', usersController.cartView);
-
     app.get('/login', usersController.loginView);
-
     app.get('/register', usersController.registerView);
-
     app.post('/addUser',
     [
     check ('name')
