@@ -4,7 +4,7 @@ const { check } = require('express-validator')
 module.exports = function(app) {
 
     app.get('/', usersController.homeView);
-    app.get('/detailProduct/:id', usersController.detailProd);
+    app.get('/detailProduct', usersController.Prods);
     app.get('/cart', usersController.cartView);
     app.get('/login', usersController.loginView);
     app.get('/register', usersController.registerView);
@@ -23,11 +23,11 @@ module.exports = function(app) {
 
     app.post('/login', 
     [
-        check ('e-mail')
+        check ('email')
             .isEmail().withMessage('Correo invalido'),
     ],usersController.login)
 
     app.use((req, res) => {
-        res.status(404).withMessage("ERROR: Pagina no encontrada");
+        res.status(404).send("ERROR: Pagina no encontrada");
         });
 };

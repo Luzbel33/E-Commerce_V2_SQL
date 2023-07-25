@@ -18,8 +18,6 @@ const Login = () => {
                     </div>
                 </div>
                     <input id= "login" type="submit" value="Ingresar"/>
-                    
-                    
                     <div className ="extras">   
                        <a id="extras" href="/register"><p>Registrarse</p></a>
                        <a id="extras" href=""><p>Olvide mi Contraseña</p></a>

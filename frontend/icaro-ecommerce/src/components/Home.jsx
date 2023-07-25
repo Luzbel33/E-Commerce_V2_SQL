@@ -10,7 +10,7 @@ const Home = () => {
             <main>
                 <Banner />
 
-                <section className="home-bg">
+                <section className="homeIndex">
 
                     <Product />
 

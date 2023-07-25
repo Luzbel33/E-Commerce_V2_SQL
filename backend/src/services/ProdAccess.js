@@ -1,13 +1,20 @@
-const fs = require('fs')
-const path = require('path');
-const prodsFilePath = path.join(__dirname, '../data/database.json');
+const { prods } = require('../../models');
 
-const getProds = () => {
-    const prods = fs.readFileSync(prodsFilePath, 'utf8');
-    const prodsJson = JSON.parse(prods);
-    return prodsJson.prods;
-};
+const getProdsFromDatabase = async () => {
+    try {
+      const prodsList = await prods.findAll();
 
-module.exports = {
-    getProds,
-}
+      return prodsList.map(prod => ({
+        id: prod.id,
+        title: prod.title,
+        description: prod.description,
+        alt: prod.alt,
+        img: prod.img
+      }));
+    } catch (error) {
+      console.error('Error al obtener los productos:', error);
+      throw new Error('Error al obtener los productos desde la base de datos');
+    }
+  };
+
+module.exports = { getProdsFromDatabase };

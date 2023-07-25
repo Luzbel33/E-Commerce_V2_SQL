@@ -30,6 +30,15 @@
       "email": "spidergian8@gmail.com",
       "password": "$2b$10$tXlATHoSHBi3PQEE3VD70ORPLt3wX4Ku8q98gtS58rsxKd6Brnvfu",
       "confirmPassword": "$2b$10$tXlATHoSHBi3PQEE3VD70ORPLt3wX4Ku8q98gtS58rsxKd6Brnvfu"
+    },
+    {
+      "id": 4,
+      "name": "PRUEBA1",
+      "username": "PRUEBA1",
+      "country": "arg",
+      "phone": "PRUEBA@GMAIL.COM",
+      "email": "PRUEBA@GMAIL.COM",
+      "password": "$2b$10$iDiL6EnktXHFvVqJNdB4tuwcQH8tL/PXD2TFQIoUI8tu1UgeyrTyO"
     }
   ]
 }

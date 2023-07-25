@@ -18,7 +18,27 @@ const Register = () => {
           </div>
         </div>
 
-        {/* Resto del código omitido para mayor claridad */}
+        <div className="padre2">
+            <div className="hijo2">
+                <label id="regist-label" htmlFor="password">Contraseña</label>
+                <input type="password" name="password" id="password" placeholder="Ingresar contraseña" required/>
+            </div>
+            <div className="hijo2-2">
+                <label id="regist-label"  htmlFor="password" >Confirmar contraseña</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar contraseña" required/>
+            </div>
+        </div>
+
+        <div className="padre3">
+            <div className="hijo3">
+              <label id="regist-label" htmlFor="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="Ingresar e-mail" required/>
+            </div>
+            <div className="hijo3-2">
+              <label id="regist-label" htmlFor="phone">Teléfono</label>
+              <input type="text" name="phone" id="phone" placeholder="Ingresar teléfono" required />
+            </div>
+        </div>
 
         <div className="padre4">
           <div className="hijo4">
