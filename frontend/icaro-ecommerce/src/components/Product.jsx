@@ -15,7 +15,7 @@ const Product = () => {
             <div id="product" key={index}> 
               <h1 className="title">{product.title}</h1>
               <img className="prod-img" src={product.img} alt={product.alt} />
-              <h2 className="desc">{product.desc}</h2>
+              <h2 className="desc">{product.description}</h2>
     
               <div className="botones">   
                 <button className="boton" id="boton"><a id="boton" href="/product">Ver mas</a></button>

@@ -19,9 +19,10 @@ module.exports = function(app) {
     check ('email')
         .isEmail().withMessage('Correo invalido')
 
-    ], usersController.addUser)
+    ],
+     usersController.addUser)
 
-    app.post('/login', 
+    app.post('/login1', 
     [
         check ('email')
             .isEmail().withMessage('Correo invalido'),

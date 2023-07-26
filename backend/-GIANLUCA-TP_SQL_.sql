@@ -3,7 +3,6 @@ CREATE TABLE `users` (
   `name` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `confirmPassword` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `birthdate` datetime DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
