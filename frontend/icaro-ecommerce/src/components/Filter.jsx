@@ -5,7 +5,7 @@ const Filter = ({ onSearchChange }) => {
 
   const nameFilter = (e) => {
     const searchTerm = e.target.value;
-    console.log('Término de búsqueda:', searchTerm);
+    // console.log('Término de búsqueda:', searchTerm);
     setBuscador(searchTerm);
     onSearchChange(searchTerm); // Envía el término de búsqueda a la función que recibe Home
   };

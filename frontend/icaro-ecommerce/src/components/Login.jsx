@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from './header';
+import Header from './Header';
 import Footer from './Footer';
 import useStore from '../stores/store';
 import { useNavigate } from 'react-router-dom'; 
@@ -10,6 +10,7 @@ const Login = () => {
     email: '', 
     password: '',
   });
+  const [error, setError] = useState(null); // Estado para manejar el mensaje de error
   const navigate = useNavigate(); 
 
   // useEffect(() => {
@@ -37,16 +38,21 @@ const Login = () => {
     };
     
     fetch('http://localhost:3000/login1', options)
-      .then(response => response.json())
-      .then(data => {
-        setUser(data);
-        navigate('/');
-
-      })
-      .catch(error => {
-        console.log('Error al realizar la solicitud:', error);
-      });
-  };
+      .then(response =>{if (response.ok) {
+        return response.json();
+      } else {
+        setError('Correo o Contraseña incorrectos'); // Establece el mensaje de error en caso de inicio de sesión fallido
+        throw new Error('Error en la solicitud');
+      }
+    })
+    .then(data => {
+      setUser(data);
+      navigate('/');
+    })
+    .catch(error => {
+      console.log('Error al realizar la solicitud:', error);
+    });
+};
 
   return (
     <>
@@ -54,6 +60,7 @@ const Login = () => {
       <form className="login" onSubmit={handleSubmit}>
         <img className="login-img" src="/imgs/logo.png" alt="logo" />
         <div className="padre">
+          {error && <p style={{ color: 'red' }}>{error}</p>} {/* Muestra el mensaje de error si existe */}
           <div className="hijo">
             <label htmlFor="email">Email</label>
             <input
