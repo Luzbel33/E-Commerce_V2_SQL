@@ -39,6 +39,7 @@ const detailProds = async (req, res) => {
     try {
         const prods = await getProdsFromDatabase();
         const prod = prods.find(prod => prod.id == req.params.id);
+        console.log(prod);
         res.send(prod);
     } catch (error) {
         console.error(error);

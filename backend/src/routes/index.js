@@ -5,6 +5,7 @@ module.exports = function(app) {
 
     app.get('/', usersController.homeView);
     app.get('/detailProduct', usersController.Prods);
+    app.get('/detailProduct/:id', usersController.detailProds);
     app.get('/cart', usersController.cartView);
     app.get('/login', usersController.loginView);
     app.get('/register', usersController.registerView);

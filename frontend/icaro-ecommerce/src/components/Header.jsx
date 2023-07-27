@@ -1,4 +1,7 @@
-const Header = () => {
+import Filter from './Filter'
+
+
+const Header = ({ onSearchChange }) => {
     return(
         <>
             <header> 
@@ -12,7 +15,8 @@ const Header = () => {
                         <a className="index-botones"href="/register"><p>Register</p></a>
                     </div>
                     
-                    <div className="div1"></div>
+                    <Filter onSearchChange={onSearchChange} />
+
         
                     <div className="div2">
                         <div className="div3"> </div>

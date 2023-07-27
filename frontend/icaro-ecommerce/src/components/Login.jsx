@@ -12,10 +12,10 @@ const Login = () => {
   });
   const navigate = useNavigate(); 
 
-  useEffect(() => {
-    if(!user) return
-    navigate('/');
-  },[user]);
+  // useEffect(() => {
+  //   if(!user) return
+  //   navigate('/');
+  // },[user]);
   
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,6 +40,8 @@ const Login = () => {
       .then(response => response.json())
       .then(data => {
         setUser(data);
+        navigate('/');
+
       })
       .catch(error => {
         console.log('Error al realizar la solicitud:', error);
