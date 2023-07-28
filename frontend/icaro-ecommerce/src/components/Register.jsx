@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from './header';
+import Header from './Header';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const Register = () => {
     }));
   };
 
-  console.log(formData);
+  // console.log(formData);
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -24,7 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     alt: DataTypes.STRING,
     img: DataTypes.STRING,
     createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
+    updatedAt: DataTypes.DATE,
+    price: DataTypes.INTEGER,
+    category: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'prods',

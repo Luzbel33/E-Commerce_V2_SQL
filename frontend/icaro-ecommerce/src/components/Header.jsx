@@ -1,18 +1,21 @@
 import Filter from './Filter'
-
+import { NavLink } from 'react-router-dom'
+// import { useUserStore } from '../stores/store'
 
 const Header = ({ onSearchChange }) => {
+    // const user = useUserStore((state)=>state.user)
     return(
         <>
             <header> 
                 <div className="contenedor">
                     <div className="img1">
-                        <a href="/"><img className="img1" src="/imgs/logo.png" alt="logo"/></a>
+                        <NavLink to="/"><img className="img1" src="/imgs/logo.png" alt="logo"/></NavLink>
                     </div>
         
                     <div className="index-botones">
-                        <a className="index-botones"href="/login"><p>Login</p></a>
-                        <a className="index-botones"href="/register"><p>Register</p></a>
+                        {/* <span>{user}</span> */}
+                        <NavLink to="/login"  className="index-botones"><p>Login</p></NavLink>
+                        <NavLink to="/register"  className="index-botones"><p>Register</p></NavLink>
                     </div>
                     
                     <Filter onSearchChange={onSearchChange} />

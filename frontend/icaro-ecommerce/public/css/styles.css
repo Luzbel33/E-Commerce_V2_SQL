@@ -461,9 +461,8 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px 10px;
-    margin: 10px;
-    font-size: 1.2rem;
+    margin-top: 40px;
+    font-size: 0.7rem;
 }
 #extras{
     color: var(--sixth);
@@ -471,7 +470,7 @@ input{
 }
 a{
     text-decoration: none;
-    color:#000; 
+    color:#ffffff; 
 }
 
 /** Footer */
@@ -916,7 +915,7 @@ border-radius: 2rem;
     font-size: 1.5rem;
 }
 a{
-    text-decoration: none; color:#000; 
+    text-decoration: none; color:#f9f5f5; 
 }
 
 /** FOOTER */

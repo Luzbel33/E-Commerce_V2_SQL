@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import useStore from '../stores/store';
+import { useUserStore } from '../stores/store';
 import { useNavigate } from 'react-router-dom'; 
+import { NavLink } from 'react-router-dom';
 
 const Login = () => {
-  const setUser = useStore((state) => state.setUser);
+  const setUser = useUserStore((state) => state.setUser);
+  const user = useUserStore((state) => state.user);
   const [formData, setFormData] = useState({
     email: '', 
     password: '',
@@ -13,11 +15,11 @@ const Login = () => {
   const [error, setError] = useState(null); // Estado para manejar el mensaje de error
   const navigate = useNavigate(); 
 
-  // useEffect(() => {
-  //   if(!user) return
-  //   navigate('/');
-  // },[user]);
-  
+  useEffect(() => {
+    if(!user) return
+    navigate('/');
+  },[user]);
+ 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -36,7 +38,7 @@ const Login = () => {
       },
       body: JSON.stringify(formData),
     };
-    
+
     fetch('http://localhost:3000/login1', options)
       .then(response =>{if (response.ok) {
         return response.json();
@@ -47,7 +49,7 @@ const Login = () => {
     })
     .then(data => {
       setUser(data);
-      navigate('/');
+      // navigate('/');
     })
     .catch(error => {
       console.log('Error al realizar la solicitud:', error);
@@ -86,7 +88,8 @@ const Login = () => {
         </div>
         <input id="login" type="submit" value="Ingresar" />
         <div className="extras">
-          <a href="/register"><p>Registrarse</p></a>
+          <NavLink to="/register" ><p>Registrarse</p></NavLink>
+          <br></br>
           <a href=""><p>Olvidé mi Contraseña</p></a>
         </div>
       </form>

@@ -48,7 +48,7 @@ const detailProds = async (req, res) => {
 };
 
 const addUser = (req, res, next) => {
-  console.log(req.body)
+  const pass = bcrypt.hashSync(req.body.password, 10);
 
   return  users.findOne({where: {email: req.body.email,}
                         })
@@ -59,7 +59,7 @@ const addUser = (req, res, next) => {
                           return users.create({ name: req.body.name,
                                                 username: req.body.username,
                                                 email: req.body.email,
-                                                password: req.body.password,
+                                                password: pass,
                                                 phone: req.body.phone,
                                                 birthdate: req.body.birthdate,
                                                 country: req.body.country

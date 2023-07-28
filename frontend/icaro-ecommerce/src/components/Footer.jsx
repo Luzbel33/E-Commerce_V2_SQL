@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+
 const Footer = () => {
     
     return (
@@ -5,7 +7,7 @@ const Footer = () => {
             <footer>
                 <div className ="foot">
                     <div className ="foot-img">
-                        <img className ="foot-img" src="/imgs/logo.png" alt="logo" />
+                        <NavLink to="/"><img className ="foot-img" src="/imgs/logo.png" alt="logo" /></NavLink>
                     </div>  
         
                     <div className ="foot2">
@@ -37,7 +39,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className ="foot5">
-                        <img className ="foot-img2" src="/imgs/logo.png" alt="logo" />
+                        <NavLink to="/" ><img className ="foot-img2" src="/imgs/logo.png" alt="logo" /></NavLink>
                         <p className ="copyright">Copyrights 2023</p>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 import Footer from './Footer';
 
 const Product2 = () => {
@@ -26,7 +27,7 @@ const Product2 = () => {
               <h2 className="desc">{product.description}</h2>
     
               <div className="botones">   
-                <button className="boton" id="boton"><a id="boton" href="/cart">Carrito</a></button>
+                <button className="boton" id="boton"><NavLink id="boton" to="/cart">Carrito</NavLink></button>
                 <p className="precio"> </p>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Product = ({ products, searchTerm }) => {
   const filteredProducts = products.filter(product =>
@@ -14,9 +15,9 @@ const Product = ({ products, searchTerm }) => {
           <h2 className="desc">{product.description}</h2>
     
           <div className="botones">   
-            <button className="boton" id="boton"><a id="boton" href={`/products/${product.id}`}>Ver mas</a></button>
-            <button className="boton" id="boton"><a id="boton" href="/cart">Carrito</a></button>
-            <p className="precio"> </p>
+            <button className="boton" id="boton"><NavLink id="boton" to={`/products/${product.id}`}>Ver mas</NavLink></button>
+            <button className="boton" id="boton"><NavLink id="boton" to="/cart">Carrito</NavLink></button>
+            <p className="precio">{product.price}</p>
           </div>
         </div>
       ))}
