@@ -29,9 +29,12 @@ const Product = ({ products, searchTerm}) => {
                             </button>
                         ) : (
                             <button className="boton" id="boton" onClick={() => addToCart(product)}>
-                              <NavLink id="boton" to="/cart">Carrito</NavLink>
+                              Agregar a Carrito
                             </button>
                         )}
+                            <button className="boton" id="boton">
+                              <NavLink id="boton" to="/cart">Carrito</NavLink>
+                            </button>
             <p className="precio">$ {product.price}</p>
           </div>
         </div>

@@ -46,8 +46,8 @@ const Cart = () => {
                   +
                 </button>
             </div>
-          </div>
-        ))}
+        </div>
+    ))}
         <div className="total">
           <p className="total-1">TOTAL:$ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</p> {/* Actualiza el total para sumar los precios totales de cada producto */}
           <button className="boton-cart2" id="botones-cart">

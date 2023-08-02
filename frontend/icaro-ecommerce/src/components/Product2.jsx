@@ -3,12 +3,14 @@ import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import Footer from './Footer';
 import Header from './Header';
 import { useUserStore } from '../stores/store';
+import { useCartStore } from '../stores/store';
 
 const Product2 = () => {
   const [product, setProduct] = useState();
   const { id } = useParams();
   const user = useUserStore((state) => state.user);
   const isAdmin = user && user.rol === "ADMIN";
+  const addToCart = useCartStore((state) => state.addToCart);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,11 +59,9 @@ const Product2 = () => {
               </button>
             </>
           ) : (
-            <button className="boton" id="boton">
-              <NavLink id="boton" to="/cart">
-                Carrito
-              </NavLink>
-            </button>
+                <button className="boton" id="boton" onClick={() => addToCart(product)}>
+                  <NavLink id="boton" to="/cart">Comprar</NavLink>
+                </button>
           )}
           <p className="precio">$ {product.price}</p>
         </div>
