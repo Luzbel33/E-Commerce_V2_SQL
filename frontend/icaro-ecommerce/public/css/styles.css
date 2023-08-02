@@ -274,23 +274,24 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     margin: 25px 22px;
     background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
     background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
     background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
     background-repeat: no-repeat;
-    width: 350px;
-    height: 700px;
+    max-width: auto;
+    /* height: 700px; */
     border-radius: 10px;
     box-shadow: 1.5px 3.5px 5.5px 3.5px rgba(0, 0, 0, 0.329);
     background-color: #000;
 }
 #productos{
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin: 15px;
+    justify-content: center;
+    /* margin: 15px; */
 }
 .title-prod{
     margin: 10px 10px 5px;
@@ -313,11 +314,17 @@ body{
 #botones-cart{
     color: var(--sixth);
 }
+.buttonsCart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
 .boton-cart{
     background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
     linear-gradient(to right, #56caf0, darkorchid) border-box;
     border: 2px solid transparent;
-    margin: -25px 30px;
+    /* margin: -25px 30px; */
     font-size: 1.2rem;
     width: 40px;
     height: 25px;
@@ -327,25 +334,32 @@ body{
     background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
     linear-gradient(to right, #56caf0, darkorchid) border-box;
     border: 2px solid transparent;
-    padding: 5px;
+    /* padding: 5px; */
     margin: -30px 200px 5px;
     font-size: 15px;
     width: 60px;
     height: 30px;
     border-radius: 2rem;
 }
-.total-1{
-color: var(--sixth);
-font-size: 1.2rem;
-}
 .total{
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
-    padding-left: 15px;
+    /* display: flex;
+    flex-direction: column; */
+    /* margin: 30px; */
+    /* padding-left: 15px; */
+    padding: 10px;
     font-size: 1.2rem;
 }
-
+.total-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 15px;
+    color: var(--sixth);
+    font-size: 1.2rem;
+}
+.quantity{
+    color: white;
+}
 /** REGISTER/4TA PAGINA */
 form{
     background-color: #000;
@@ -705,49 +719,28 @@ a{
 
 /** CARRITO/3RA PAGINA */
 .carrito{
-    margin-left: 325px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #7a45ba 7px, #7a45ba 11px, transparent 11px), linear-gradient(to right, #7a45ba, #000000), radial-gradient(circle at 0% 100%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to bottom, #000000, #56caf0), radial-gradient(circle at 0% 0%, transparent 7px, #56caf0 7px, #56caf0 11px, transparent 11px), linear-gradient(to left, #56caf0, #000000), radial-gradient(circle at 100% 0%, transparent 7px, #000000 7px, #000000 11px, transparent 11px), linear-gradient(to top, #000000, #7a45ba);
-    background-size: 11px 11px, calc(100% - 22px) 4px, 11px 11px, 4px calc(100% - 22px);
-    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
-    background-repeat: no-repeat;
-    border-radius: 10px;
-    box-shadow: 1.5px 3.5px 5.5px 3.5px rgba(0, 0, 0, 0.329);
-    width: 1200px;
-    box-shadow: none;
-    height: 100%;    
+    padding: 50px;
+    margin-top:50px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
-#producto1, #producto2{
-    display: flex;
+#productos{
     flex-direction: column;
-    margin: 10px;
-}
-#producto1>h1, #producto2>h1{
-    font-size: 2rem;
-    padding: 15px;
-}
-#producto1>h2, #producto2>h2{
-    font-size: 2rem;
-    padding: 15px;
+    justify-content: center;
+    align-items: center;
 }
 .img-cart{
-    max-width: 50%;
-    max-height: 100%;
+    max-width: 250px;
+    max-height: 250px;
     border-radius: 25px;
     margin: 10px;
 }
 .boton-cart{
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
-    linear-gradient(to right, #56caf0, darkorchid) border-box;
-    border-radius: 50em;
-    border: 2px solid transparent;
-    margin: 180px 10px;
+    margin: 10px 10px;
     font-size: 2rem;
-    width: 100px;
+    width: 40px;
     height: 40px;
     border-radius: 2rem;
 }
@@ -781,6 +774,10 @@ a{
     font-size: 2rem;
 }
 
+
+.quantity{
+    color: white;
+}
 
 /** REGISTER/4TA PAGINA */
 .register-main{

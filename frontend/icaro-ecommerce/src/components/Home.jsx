@@ -39,11 +39,6 @@ const Home = () => {
                           <></>
                         )}
           <section className="homeIndex">
-          {/* {isAdmin ? (
-                         <span> Agregar Producto</span>
-                        ) : (
-                          <></>
-                        )} */}
             <Product products={products} searchTerm={searchTerm} /> {/* Pasamos searchTerm como prop */}
           </section>
         </main>
@@ -53,69 +48,3 @@ const Home = () => {
   };
   
   export default Home;
-
-// Home.js
-// import React, { useState, useEffect } from 'react';
-// import Header from './Header';
-// import Footer from './Footer';
-// import Product from './Product';
-// import Banner from './Banner';
-// import { useUserStore } from '../stores/store';
-
-// const Home = () => {
-//   const [searchTerm, setSearchTerm] = useState("");
-//   const [products, setProducts] = useState([]);
-//   const [cartItems, setCartItems] = useState([]);
-
-//   const user = useUserStore((state) => state.user);
-//   const isAdmin = user && user.rol === "ADMIN";
-
-//   const handleSearchChange = (searchTerm) => {
-//     setSearchTerm(searchTerm);
-//   };
-
-//   const addToCart = (product) => {
-//     const existingItem = cartItems.find(item => item.id === product.id);
-
-//     if (existingItem) {
-//       const updatedItems = cartItems.map(item =>
-//         item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-//       );
-//       setCartItems(updatedItems);
-//     } else {
-//       setCartItems([...cartItems, { ...product, quantity: 1 }]);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetch("http://localhost:3000/detailProduct")
-//       .then(response => response.json())
-//       .then(data => setProducts(data))
-//       .catch(error => console.log('Error al obtener los productos:', error));
-//   }, []);
-
-//   return (
-//     <>
-//       <Header onSearchChange={handleSearchChange} />
-//       <main>
-//         <Banner />
-//         {isAdmin ? (
-//           <div className='addBtn'>
-//             <button className="boton" id="addBtn">
-//               <NavLink id="boton" to=''>Agregar Producto</NavLink>
-//             </button>
-//           </div>
-//         ) : (
-//           <></>
-//         )}
-//         <section className="homeIndex">
-//           <Product products={products} searchTerm={searchTerm} addToCart={addToCart} />
-//         </section>
-//       </main>
-//       <Footer />
-//     </>
-//   );
-// };
-
-// export default Home;
-

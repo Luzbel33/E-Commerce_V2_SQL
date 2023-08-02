@@ -1,14 +1,13 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../stores/store';
+import { useCartStore } from '../stores/store';
 
 const Product = ({ products, searchTerm}) => {
   const user = useUserStore((state) => state.user);
   const isAdmin = user && user.rol === "ADMIN";
   const navigate = useNavigate();
-  // const filteredProducts = products.filter(product =>
-  //   product.title.toUpperCase().includes(searchTerm.toUpperCase())
-  // );
+  const addToCart = useCartStore((state) => state.addToCart);
   const filteredProducts = products.filter((product) => {
     const title = product.title || ''; // Si product.title es null o undefined, asigna un valor vacío.
     return title.toUpperCase().includes((searchTerm || '').toUpperCase());
@@ -29,8 +28,8 @@ const Product = ({ products, searchTerm}) => {
                                 Editar
                             </button>
                         ) : (
-                            <button className="boton" id="boton">
-                                <NavLink id="boton" to="/cart">Carrito</NavLink>
+                            <button className="boton" id="boton" onClick={() => addToCart(product)}>
+                              <NavLink id="boton" to="/cart">Carrito</NavLink>
                             </button>
                         )}
             <p className="precio">$ {product.price}</p>
@@ -42,6 +41,8 @@ const Product = ({ products, searchTerm}) => {
 }
 
 export default Product;
+
+
 
 
 
