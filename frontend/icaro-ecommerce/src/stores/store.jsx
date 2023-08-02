@@ -101,5 +101,25 @@ export const useCartStore = create((set) => ({
       return { products: updatedProducts };
     });
   },
+
+  savePurchase: (userData, products, total) => {
+    const purchaseData = {
+      user: userData.email, // Guardamos el email del usuario
+      products: products.map((product) => ({
+        title: product.title,
+        quantity: product.quantity,
+        price: product.price,
+      })),
+      total,
+    };
+    // Guardamos la información de la compra en el local storage
+    const userPurchasesKey = `purchases_${userData.email}`; // Creamos una clave única para cada usuario basada en su email
+    const purchases = localStorage.getItem(userPurchasesKey) ? JSON.parse(localStorage.getItem(userPurchasesKey)) : [];
+    purchases.push(purchaseData);
+    localStorage.setItem(userPurchasesKey, JSON.stringify(purchases));
+
+    // Limpiamos el carrito después de guardar la compra
+    useCartStore.setState({ products: [] });
+  },
 }));
 

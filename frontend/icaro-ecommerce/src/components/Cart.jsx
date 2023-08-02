@@ -2,19 +2,26 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { useCartStore } from '../stores/store';
-import { useEffect } from 'react';
+import { useUserStore } from '../stores/store';
+import { useState,useEffect } from 'react';
 
 const Cart = () => {
   const cartItems = useCartStore((state) => state.products);
-
   const removeFromCart = useCartStore((state) => state.removeFromCart);
-
   const increaseQuantity = useCartStore((state) => state.increaseQuantity);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
-
-  const clearCart = useCartStore((state) => state.clearCart);
   const initCart = useCartStore((state) => state.initCart);
+  const savePurchase = useCartStore((state) => state.savePurchase);
+  const [user, setUser] = useState(useUserStore((state) => state.user));
+  const products = useCartStore((state) => state.products); // Retrieve products outside of handlePagar
 
+  const handlePagar = async (event, user, products) => { // Pass products as an argument
+    event.preventDefault();
+    const total = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    await savePurchase(user, products, total);
+  };
+
+  
   // Inicializamos el carrito una vez que el componente se monta
   useEffect(() => {
     initCart();
@@ -57,9 +64,9 @@ const Cart = () => {
     ))}
         <div className="total">
           <p className="total-1">TOTAL:$ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</p> {/* Actualiza el total para sumar los precios totales de cada producto */}
-          <button className="boton-cart2" id="botones-cart">
-            PAGAR
-          </button>
+          <button className="boton-cart2" id="botones-cart" onClick={(event) => handlePagar(event, user, products)}>
+  PAGAR
+</button>
         </div>
       </section>
       <Footer />
