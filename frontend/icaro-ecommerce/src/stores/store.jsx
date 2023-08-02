@@ -36,22 +36,34 @@ export const useCartStore = create((set) => ({
 
   addToCart: (product) => {
     set((state) => {
-      const userIdentification = useUserStore.getState().user.email; // Retrieve the user email from the useUserStore state
-      const updatedCartData = state.products;
-      let foundProduct = updatedCartData.find((item) => item.product === product.title && item.identification === userIdentification);
-      if (foundProduct) {
-        foundProduct.quantity += 1;
+      const userIdentification = useUserStore.getState().user.email;
+      const updatedCartData = [...state.products];
+      const existingProductIndex = updatedCartData.findIndex(
+        (item) =>
+          item.product === product.title &&
+          item.identification === userIdentification
+      );
+  
+      if (existingProductIndex !== -1) {
+        updatedCartData[existingProductIndex].quantity += 1;
       } else {
-        foundProduct = {
+        const newCartItem = {
           product: product.title,
           quantity: 1,
           price: product.price,
+          img: product.img, // Include the img attribute
+          title: product.title, // Include the title attribute
+          // Include other necessary attributes
+          // ...
           identification: userIdentification,
         };
-        updatedCartData.push(foundProduct);
+        updatedCartData.push(newCartItem);
       }
-
-      localStorage.setItem(`cart_${userIdentification}`, JSON.stringify(updatedCartData));
+  
+      localStorage.setItem(
+        `cart_${userIdentification}`,
+        JSON.stringify(updatedCartData)
+      );
       return { products: updatedCartData };
     });
   },
