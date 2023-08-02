@@ -7,13 +7,6 @@ export const useUserStore = create((set) => ({
     set({ user });
     localStorage.setItem('user', JSON.stringify(user));
   },
-  registerUser: (userData) => {
-    // Utilizar el email como identificador
-    const userEmail = userData.email;
-    const userWithEmail = { ...userData, id: userEmail };
-    set({ user: userWithEmail });
-    localStorage.setItem('user', JSON.stringify(userWithEmail));
-  }
 }));
 
 export const useCartStore = create((set) => ({
@@ -26,63 +19,55 @@ export const useCartStore = create((set) => ({
   },
 
   initCart: () => {
-    const user = useUserStore.getState().user;
-    if (user) {
-      const userEmail = user.email;
-      const cart = JSON.parse(localStorage.getItem(`cart_${userEmail}`));
-      if (cart) {
-        set({ products: cart });
-      } else {
-        // Si el carrito no existe, lo inicializamos como un array vacío
-        set({ products: [] });
-      }
+    const userIdentification = useUserStore.getState().user.email; // Retrieve the user email from the useUserStore state
+    const cart = JSON.parse(localStorage.getItem(`cart_${userIdentification}`));
+    if (cart) {
+      set({ products: cart });
+    } else {
+      set({ products: [] });
     }
   },
 
   clearCart: () => {
-    const userIdentification = useUserStore.getState().userIdentification; // Obtenemos la identificación del usuario desde el estado global de useUserStore
+    const userIdentification = useUserStore.getState().user.email; // Retrieve the user email from the useUserStore state
     localStorage.removeItem(`cart_${userIdentification}`);
     set({ products: [] });
   },
 
   addToCart: (product) => {
     set((state) => {
-      const user = useUserStore.getState().user; // Obtenemos el usuario desde el estado global useUserStore
-      const userEmail = user ? user.email : null; // Obtenemos el email del usuario si está autenticado
+      const userIdentification = useUserStore.getState().user.email; // Retrieve the user email from the useUserStore state
       const updatedCartData = state.products;
-      let foundProduct = updatedCartData.find((item) => item.product === product.title && item.identification === userEmail);
+      let foundProduct = updatedCartData.find((item) => item.product === product.title && item.identification === userIdentification);
       if (foundProduct) {
         foundProduct.quantity += 1;
       } else {
         foundProduct = {
-          title: product.title,
-          description: product.description,
-          img: product.img, // Agregamos la información de la imagen
+          product: product.title,
           quantity: 1,
           price: product.price,
-          identification: userEmail, // Usamos userEmail como identificador
+          identification: userIdentification,
         };
         updatedCartData.push(foundProduct);
       }
 
-      localStorage.setItem(`cart_${userEmail}`, JSON.stringify(updatedCartData));
+      localStorage.setItem(`cart_${userIdentification}`, JSON.stringify(updatedCartData));
       return { products: updatedCartData };
     });
   },
 
-
   removeFromCart: (index) => {
     set((state) => {
-      const user = useUserStore.getState().user; // Obtenemos el usuario desde el estado global useUserStore
-      const userEmail = user ? user.email : null; // Obtenemos el email del usuario si está autenticado
+      const userIdentification = useUserStore.getState().user.email; // Retrieve the user email from the useUserStore state
       const updatedProducts = state.products.filter((_, i) => i !== index);
-      localStorage.setItem(`cart_${userEmail}`, JSON.stringify(updatedProducts));
+      localStorage.setItem(`cart_${userIdentification}`, JSON.stringify(updatedProducts));
       return { products: updatedProducts };
     });
   },
+
   increaseQuantity: (index) => {
     set((state) => {
-      const userIdentification = useUserStore.getState().userIdentification; // Obtenemos la identificación del usuario desde el estado global de useUserStore
+      const userIdentification = useUserStore.getState().user.email; // Retrieve the user email from the useUserStore state
       const updatedProducts = [...state.products];
       updatedProducts[index].quantity += 1;
       localStorage.setItem(`cart_${userIdentification}`, JSON.stringify(updatedProducts));
@@ -92,7 +77,7 @@ export const useCartStore = create((set) => ({
 
   decreaseQuantity: (index) => {
     set((state) => {
-      const userIdentification = useUserStore.getState().userIdentification; // Obtenemos la identificación del usuario desde el estado global de useUserStore
+      const userIdentification = useUserStore.getState().user.email; // Retrieve the user email from the useUserStore state
       const updatedProducts = [...state.products];
       if (updatedProducts[index].quantity > 1) {
         updatedProducts[index].quantity -= 1;
@@ -101,7 +86,6 @@ export const useCartStore = create((set) => ({
       return { products: updatedProducts };
     });
   },
-
   savePurchase: (userData, products, total) => {
     const purchaseData = {
       user: userData.email, // Guardamos el email del usuario
@@ -117,9 +101,7 @@ export const useCartStore = create((set) => ({
     const purchases = localStorage.getItem(userPurchasesKey) ? JSON.parse(localStorage.getItem(userPurchasesKey)) : [];
     purchases.push(purchaseData);
     localStorage.setItem(userPurchasesKey, JSON.stringify(purchases));
-
     // Limpiamos el carrito después de guardar la compra
     useCartStore.setState({ products: [] });
   },
 }));
-
