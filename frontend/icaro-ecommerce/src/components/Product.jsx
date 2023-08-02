@@ -1,10 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useUserStore } from '../stores/store';
 
-const Product = ({ products, searchTerm }) => {
-  const filteredProducts = products.filter(product =>
-    product.title.toUpperCase().includes(searchTerm.toUpperCase())
-  );
+const Product = ({ products, searchTerm}) => {
+  const user = useUserStore((state) => state.user);
+  const isAdmin = user && user.rol === "ADMIN";
+  const navigate = useNavigate();
+  // const filteredProducts = products.filter(product =>
+  //   product.title.toUpperCase().includes(searchTerm.toUpperCase())
+  // );
+  const filteredProducts = products.filter((product) => {
+    const title = product.title || ''; // Si product.title es null o undefined, asigna un valor vacío.
+    return title.toUpperCase().includes((searchTerm || '').toUpperCase());
+  });
 
   return (
     <>
@@ -16,8 +24,16 @@ const Product = ({ products, searchTerm }) => {
     
           <div className="botones">   
             <button className="boton" id="boton"><NavLink id="boton" to={`/products/${product.id}`}>Ver mas</NavLink></button>
-            <button className="boton" id="boton"><NavLink id="boton" to="/cart">Carrito</NavLink></button>
-            <p className="precio">{product.price}</p>
+            {isAdmin ? (
+                            <button className="boton" id="boton" onClick={()=>navigate('/EditProduct',{state: {product}})}>
+                                Editar
+                            </button>
+                        ) : (
+                            <button className="boton" id="boton">
+                                <NavLink id="boton" to="/cart">Carrito</NavLink>
+                            </button>
+                        )}
+            <p className="precio">$ {product.price}</p>
           </div>
         </div>
       ))}
@@ -26,4 +42,8 @@ const Product = ({ products, searchTerm }) => {
 }
 
 export default Product;
+
+
+
+
 

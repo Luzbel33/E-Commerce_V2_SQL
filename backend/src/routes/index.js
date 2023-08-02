@@ -8,7 +8,11 @@ module.exports = function(app) {
     app.get('/detailProduct/:id', usersController.detailProds);
     app.get('/cart', usersController.cartView);
     app.get('/login', usersController.loginView);
+    app.get('/logout', usersController.logout);
     app.get('/register', usersController.registerView);
+    app.post('/addProduct', usersController.addProduct)
+    app.post('/editProduct/:id', usersController.editProduct);
+    app.post('/deleteProduct/:id', usersController.deleteProduct);
     app.post('/addUser',
     [
     check ('name')

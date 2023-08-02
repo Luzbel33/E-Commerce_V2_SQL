@@ -67,7 +67,7 @@ const Login = () => {
             <label htmlFor="email">Email</label>
             <input
               type="email"
-              name="email" // Cambiar el atributo 'name' para que coincida con el estado 'formData'
+              name="email"
               id="email"
               placeholder="Correo electrónico"
               required

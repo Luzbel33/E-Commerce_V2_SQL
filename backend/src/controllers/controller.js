@@ -1,6 +1,7 @@
 const path = require('path');
 const { getProdsFromDatabase } = require('../services/ProdAccess');
 const users = require('../../models').users;
+const prods = require('../../models').prods;
 const { validationResult }  = require('express-validator');
 const bcrypt = require('bcrypt');
 
@@ -80,40 +81,6 @@ const addUser = (req, res, next) => {
               )
 }
 
-// const addUser = (req, res) => {
-//     const errors = validationResult(req);
-
-//     if (!errors.isEmpty()) {
-//         return res.status(422).json({ errors: errors.array() });
-//     }
-
-//     const pass = bcrypt.hashSync(req.body.password, 10);
-//     users.create({
-//         name: req.body.name,
-//         username: req.body.username,
-//         email: req.body.email,
-//         password: pass,
-//         phone: req.body.phone,
-//         birthdate: req.body.birthdate,
-//         country: req.body.country
-//     })
-//     .then(user => {
-//         if (user) {
-//             res.redirect('/');
-//         } else {
-//             const err = {}
-//             err.status = 404
-//             err.messages = [{ msg: "No se pudo insertar el usuario" }]
-//             res.status(404).json(err);
-//         }
-//     })
-//     .catch(error => {
-//         const err = {}
-//         err.status = 404
-//         err.messages = [{ msg: error }]
-//         res.status(404).json(err);
-//     })
-// }
 
 const deleteUser = (req, res, next) => {
     console.log(req.params);
@@ -181,6 +148,88 @@ const logout = (req, res) => {
     res.clearCookie('nuevo');
     res.redirect('/');
 };
+
+
+
+const addProduct = async (req, res, next) => {
+  const formData = req.body;
+
+  try {
+    // Validar que todos los campos necesarios estén presentes
+    if (!formData.title || !formData.description || !formData.alt || !formData.img || !formData.price || !formData.category) {
+      return res.status(400).json({ mensaje: 'Faltan campos requeridos.' });
+    }
+
+    // Crear el producto en la base de datos
+    await prods.create({
+      title: formData.title,
+      description: formData.description,
+      alt: formData.alt,
+      img: formData.img,
+      price: formData.price,
+      category: formData.category,
+    });
+    console.log('Se grabó correctamente el producto.');
+    return res.status(200).json({ mensaje: 'Producto guardado correctamente.' });
+  } catch (error) {
+    console.error('Error al crear el producto:', error);
+    return res.status(500).json({ mensaje: 'Error al crear el producto.' });
+  }
+};
+
+
+
+
+// Función para editar un producto existente
+const editProduct = (req, res, next) => {
+  const productId = req.params.id;
+  console.log(req.body);
+  // const { title, description, alt, img, price, category } = req.body;
+
+  return prods.update(
+    {
+      title: req.body.title ,
+      description: req.body.description ,
+      alt: req.body.alt,
+      img: req.body.img,
+      price: req.body.price,
+      category: req.body.category,
+    },
+    {
+      where: { id: productId },
+    }
+  )
+    .then((rowsUpdated) => {
+      if (rowsUpdated[0] === 1) {
+        res.status(200).json({ success: true, message: 'Producto actualizado correctamente.' });
+      } else {
+        res.status(404).json({ success: false, message: 'Producto no encontrado.' });
+      }
+    })
+    .catch((error) => {
+      res.status(400).json({ success: false, error });
+    });
+};
+
+// Función para eliminar un producto por su ID
+const deleteProduct = async (req, res, next) => {
+  const productId = req.params.id;
+
+  try {
+    const deletedProduct = await prods.destroy({
+      where: { id: productId },
+    });
+
+    if (deletedProduct) {
+      return res.status(200).json({ success: true, message: 'Producto eliminado correctamente.' });
+    } else {
+      return res.status(404).json({ success: false, message: 'Producto no encontrado.' });
+    }
+  } catch (error) {
+    console.error('Error al eliminar el producto:', error);
+    return res.status(500).json({ success: false, mensaje: 'Error al eliminar el producto.' });
+  }
+};
   
   module.exports = {
     homeView,
@@ -192,6 +241,9 @@ const logout = (req, res) => {
     addUser,
     deleteUser,
     login,
-    logout
+    logout,  
+    addProduct,
+    editProduct,
+    deleteProduct
 };
   

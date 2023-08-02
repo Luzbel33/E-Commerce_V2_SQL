@@ -101,7 +101,22 @@ body{
     object-fit: cover; 
 }
 
+
+.addProdForm {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color:white;
+}
+
+
 /** HOME */
+.addBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
 .homeIndex{
     display: flex;
     flex-direction: row;
