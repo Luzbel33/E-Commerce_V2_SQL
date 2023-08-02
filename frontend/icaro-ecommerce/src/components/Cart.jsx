@@ -1,17 +1,24 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import { useUserStore } from '../stores/store';
 import { useCartStore } from '../stores/store';
+import { useEffect } from 'react';
 
 const Cart = () => {
-  const user = useUserStore((state) => state.user);
   const cartItems = useCartStore((state) => state.products);
 
   const removeFromCart = useCartStore((state) => state.removeFromCart);
 
   const increaseQuantity = useCartStore((state) => state.increaseQuantity);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
+
+  const clearCart = useCartStore((state) => state.clearCart);
+  const initCart = useCartStore((state) => state.initCart);
+
+  // Inicializamos el carrito una vez que el componente se monta
+  useEffect(() => {
+    initCart();
+  }, []);
 
   return (
     <>

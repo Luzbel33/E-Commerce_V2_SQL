@@ -1,12 +1,13 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useUserStore } from '../stores/store';
 import { useCartStore } from '../stores/store';
 
 const Product = ({ products, searchTerm}) => {
   const user = useUserStore((state) => state.user);
+  const userEmail = user ? user.email : null;
   const isAdmin = user && user.rol === "ADMIN";
-  const navigate = useNavigate();
+  
   const addToCart = useCartStore((state) => state.addToCart);
   const filteredProducts = products.filter((product) => {
     const title = product.title || ''; // Si product.title es null o undefined, asigna un valor vacío.
@@ -24,17 +25,17 @@ const Product = ({ products, searchTerm}) => {
           <div className="botones">   
             <button className="boton" id="boton"><NavLink id="boton" to={`/products/${product.id}`}>Ver mas</NavLink></button>
             {isAdmin ? (
-                            <button className="boton" id="boton" onClick={()=>navigate('/EditProduct',{state: {product}})}>
-                                Editar
-                            </button>
-                        ) : (
-                            <button className="boton" id="boton" onClick={() => addToCart(product)}>
-                              Agregar a Carrito
-                            </button>
-                        )}
-                            <button className="boton" id="boton">
-                              <NavLink id="boton" to="/cart">Carrito</NavLink>
-                            </button>
+              <button className="boton" id="boton" onClick={()=>navigate('/EditProduct',{state: {product}})}>
+                Editar
+              </button>
+            ) : (
+              <button className="boton" id="boton" onClick={() => addToCart(product, userEmail)}> {/* Pasamos el email del usuario */}
+                Agregar a Carrito
+              </button>
+            )}
+            <button className="boton" id="boton">
+              <NavLink id="boton" to="/cart">Carrito</NavLink>
+            </button>
             <p className="precio">$ {product.price}</p>
           </div>
         </div>
