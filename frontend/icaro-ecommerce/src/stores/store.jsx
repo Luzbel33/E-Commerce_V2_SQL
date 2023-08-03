@@ -40,7 +40,7 @@ export const useCartStore = create((set) => ({
       const updatedCartData = [...state.products];
       const existingProductIndex = updatedCartData.findIndex(
         (item) =>
-          item.product === product.title &&
+          item.product === product.id &&
           item.identification === userIdentification
       );
   
@@ -48,7 +48,7 @@ export const useCartStore = create((set) => ({
         updatedCartData[existingProductIndex].quantity += 1;
       } else {
         const newCartItem = {
-          product: product.title,
+          product: product.id,
           quantity: 1,
           price: product.price,
           img: product.img, // Include the img attribute

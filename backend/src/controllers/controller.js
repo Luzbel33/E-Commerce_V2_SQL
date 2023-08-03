@@ -2,6 +2,7 @@ const path = require('path');
 const { getProdsFromDatabase } = require('../services/ProdAccess');
 const users = require('../../models').users;
 const prods = require('../../models').prods;
+const purchase = require('../../models').purchases;
 const { validationResult }  = require('express-validator');
 const bcrypt = require('bcrypt');
 
@@ -149,8 +150,6 @@ const logout = (req, res) => {
     res.redirect('/');
 };
 
-
-
 const addProduct = async (req, res, next) => {
   const formData = req.body;
 
@@ -176,9 +175,6 @@ const addProduct = async (req, res, next) => {
     return res.status(500).json({ mensaje: 'Error al crear el producto.' });
   }
 };
-
-
-
 
 // Función para editar un producto existente
 const editProduct = (req, res, next) => {
@@ -230,7 +226,47 @@ const deleteProduct = async (req, res, next) => {
     return res.status(500).json({ success: false, mensaje: 'Error al eliminar el producto.' });
   }
 };
+
+const savePurchase = async (req, res, next) => {
+  const purchaseData = req.body;
+
+  try {
+    // Get all existing purchases for the user
+    const existingPurchases = await purchase.findAll({
+      where: { user: purchaseData.user },
+    });
   
+    // Check each product and update or create the purchase accordingly
+    for (const product of purchaseData.products) {
+      const existingPurchase = existingPurchases.find((p) => p.title === product.title);
+  
+      if (existingPurchase) {
+        // If a purchase already exists, update the existing record
+        await existingPurchase.update({
+          quantity: product.quantity,
+          price: product.price,
+          total: product.total,
+        });
+      } else {
+        // If a purchase doesn't exist, insert a new record
+        await purchase.create({
+          user: purchaseData.user,
+          title: product.title,
+          quantity: product.quantity,
+          price: product.price,
+          total: product.total,
+        });
+      }
+    }
+
+    console.log('Purchase data saved successfully.');
+    return res.status(200).json({ message: 'Purchase data saved successfully.' });
+  } catch (error) {
+    console.error('Error saving purchase data:', error);
+    return res.status(500).json({ message: 'Error saving purchase data.' });
+  }
+};
+
   module.exports = {
     homeView,
     Prods,
@@ -244,6 +280,7 @@ const deleteProduct = async (req, res, next) => {
     logout,  
     addProduct,
     editProduct,
-    deleteProduct
+    deleteProduct,
+    savePurchase
 };
   

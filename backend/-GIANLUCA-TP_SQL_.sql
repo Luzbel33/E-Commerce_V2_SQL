@@ -14,6 +14,8 @@ CREATE TABLE `users` (
 
 select * from ecom.users;
 
+select * from ecom.purchases;
+
 insert into ecom.users (id, name, username, password, email, country, phone, createdAt, updatedAt, rol)
 values (1,'ADMIN', 'ADMIN', '$2b$10$YdER1A4lusQCl6PZPFREk.USGVU9kZH48wQnPgFhNi0Mwk16ul/l6', 'ADMIN@ADMIN.com', 'Argentina', '3873366936', '2023-07-31 19:07:07','2023-07-31 19:08:08','ADMIN');
 

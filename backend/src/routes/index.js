@@ -13,6 +13,7 @@ module.exports = function(app) {
     app.post('/addProduct', usersController.addProduct)
     app.post('/editProduct/:id', usersController.editProduct);
     app.post('/deleteProduct/:id', usersController.deleteProduct);
+    app.post('/savePurchase', usersController.savePurchase);
     app.post('/addUser',
     [
     check ('name')
