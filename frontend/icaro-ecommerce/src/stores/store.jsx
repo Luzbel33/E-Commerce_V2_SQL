@@ -100,8 +100,8 @@ export const useCartStore = create((set) => ({
   },
   savePurchase: (userData, products, total) => {
     const purchaseData = {
-      user: userData.email, // Guardamos el email del usuario
-      products: products.map((product) => ({
+        user: userData.email, // Guardamos el email del usuario
+        products: products.map((product) => ({
         title: product.title,
         quantity: product.quantity,
         price: product.price,

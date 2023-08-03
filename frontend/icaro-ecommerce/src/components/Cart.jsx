@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { useCartStore } from '../stores/store';
 import { useUserStore } from '../stores/store';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const Cart = () => {
   const cartItems = useCartStore((state) => state.products);
@@ -33,6 +33,7 @@ const Cart = () => {
             <h1 className="title-prod">{item.title}</h1>
             <img className="img-cart" src={item.img} alt={item.alt} />
             <div className='buttonsCart'>
+            <h1 className="title-prod">$ {item.price}</h1>
               <button
                 className="boton-cart"
                 id="botones-cart"
