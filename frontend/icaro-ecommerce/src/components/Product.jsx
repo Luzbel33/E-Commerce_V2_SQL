@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, } from 'react-router-dom';
 import { useUserStore } from '../stores/store';
 import { useCartStore } from '../stores/store';
 
@@ -7,7 +7,7 @@ const Product = ({ products, searchTerm}) => {
   const user = useUserStore((state) => state.user);
   const userEmail = user ? user.email : null;
   const isAdmin = user && user.rol === "ADMIN";
-  
+  const navigate = useNavigate()
   const addToCart = useCartStore((state) => state.addToCart);
   const filteredProducts = products.filter((product) => {
     const title = product.title || ''; // Si product.title es null o undefined, asigna un valor vacío.
