@@ -1,32 +1,40 @@
-const path = require('path');
+// const path = require('path');
+// const { validationResult }  = require('express-validator');
 const { getProdsFromDatabase } = require('../services/ProdAccess');
 const users = require('../../models').users;
 const prods = require('../../models').prods;
 const purchase = require('../../models').purchases;
-const { validationResult }  = require('express-validator');
 const bcrypt = require('bcrypt');
 
+//** Vistas comentadas porque ya no se usan, solo dejo el backend activo, pero dejo la carpeta `views` por si se quiere ver el trabajo/*/
+// const homeView = async (req, res) => {
+//     try {
+//       const prods = await getProdsFromDatabase();
+//       res.render(path.join(__dirname, '../views/Home.ejs'), { prods });
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).send('Error al cargar los productos');
+//     }
+// };
+  
+// const cartView = async (req, res) => {
+//     try {
+//       const prods = await getProdsFromDatabase();
+//       res.render(path.join(__dirname, '../views/Cart.ejs'), { prods: prods.slice(0, 2) });
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).send('Error al cargar los productos en el carrito');
+//     }
+// };
+  
+// const registerView = (req, res) => {
+//     res.render(path.join(__dirname, '../views/Register.ejs'));
+// };
 
-const homeView = async (req, res) => {
-    try {
-      const prods = await getProdsFromDatabase();
-      res.render(path.join(__dirname, '../views/Home.ejs'), { prods });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Error al cargar los productos');
-    }
-};
-  
-const cartView = async (req, res) => {
-    try {
-      const prods = await getProdsFromDatabase();
-      res.render(path.join(__dirname, '../views/Cart.ejs'), { prods: prods.slice(0, 2) });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Error al cargar los productos en el carrito');
-    }
-};
-  
+// const loginView = (req, res) => {
+//     res.render(path.join(__dirname, '../views/Login.ejs'));
+// };
+
 const Prods = async (req, res) => {
     try {
       const prods = await getProdsFromDatabase();
@@ -103,13 +111,7 @@ const deleteUser = (req, res, next) => {
         })
 }
 
-const registerView = (req, res) => {
-    res.render(path.join(__dirname, '../views/Register.ejs'));
-};
 
-const loginView = (req, res) => {
-    res.render(path.join(__dirname, '../views/Login.ejs'));
-};
 
 const login = (req, res,next) => {
   return  users.findOne({
@@ -268,12 +270,12 @@ const savePurchase = async (req, res, next) => {
 };
 
   module.exports = {
-    homeView,
+    // homeView,
     Prods,
     detailProds,
-    cartView,
-    loginView,
-    registerView,
+    // cartView,
+    // loginView,
+    // registerView,
     addUser,
     deleteUser,
     login,
